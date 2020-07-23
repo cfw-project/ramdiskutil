@@ -62,3 +62,9 @@ ramdisk <br />
 /send \[kernelcache\] <br />
 bootx <br />**
 *Then your ramdisk will be successfully booted!*
+# NOTE
+***ida_patcher and restored_external_verbose_patch.dif is made for booting in verbose mode.
+
+If you don't want apple logo shown when booted, please patch mp/usr/local/bin/restored\_external using this command:
+
+./ida\_patcher -i restored\_external -p restored_external_verbose_patch.dif

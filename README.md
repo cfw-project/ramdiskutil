@@ -45,7 +45,14 @@ Files needed to download: <br />
 **./unmount.sh <br />
 ./packimg3.sh <br />**
 8. Boot the ramdisk <br />
-*Let your device enter kDFU mode* <br />
+*Let your device enter kDFU mode. <br />
+for iPhone, send kloader and patched iBSS to the root directory of your device. for iPad, send iBEC instead of iBSS. <br />
+ssh into your device and run: /kloader /\[Your ibss or ibec\]* <br />
+**\{ <br />
+./image3maker -t ibec -f \[patched\_ibec\] -o pwnediBEC <br />
+./irecovery -f pwnediBEC <br />
+} <br />**
+*Skip these command in* ***\{\}*** *if it is an iPad <br />*
 **./irecovery -s <br />
 On the shell, type: <br />
 /send \[devicetree\] <br />

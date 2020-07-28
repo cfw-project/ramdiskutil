@@ -35,8 +35,9 @@ Files needed to download: <br />
 4. Patch iBSS and iBEC <br />
 **./iBoot32Patcher \[decrypted\_ibss\] \[patched\_file\] <br />
 ./iBoot32Patcher \[decrypted\_ibec\] \[patched\_file\] -b "rd=md0 -v amfi=0xff cs\_enforcement\_disable=1" <br />**
-5. Mount the ramdisk <br />
-**mkdir mp <br />
+5. Resize and mount the ramdisk <br />
+**hdiutil resize -size 32M RestoreRamdisk.dmg <br />
+mkdir mp <br />
 ./mount.sh <br />**
 6. Extract sshd to ramdisk <br />
 **tar -xvf ssh.tar -C mp <br />**
@@ -45,7 +46,7 @@ Files needed to download: <br />
 **./unmount.sh <br />
 ./packimg3.sh <br />**
 8. Boot the ramdisk <br />
-*Let your device enter kDFU mode. <br />
+*Let your device enter pwned DFU mode. <br />
 for iPhone, send kloader and patched iBSS to the root directory of your device. for iPad, send iBEC instead of iBSS. <br />
 ssh into your device and run: /kloader /\[Your ibss or ibec\]* <br />
 **\{ <br />
@@ -63,8 +64,6 @@ ramdisk <br />
 bootx <br />**
 *Then your ramdisk will be successfully booted!*
 # NOTE
-***ida_patcher and restored_external_verbose_patch.dif is made for booting in verbose mode.
-
-If you don't want apple logo shown when booted, please patch mp/usr/local/bin/restored\_external using this command:
-
-./ida\_patcher -i restored\_external -p restored_external_verbose_patch.dif
+***ida_patcher and restored_external_verbose_patch.dif is made for booting in verbose mode. <br />
+If you don't want apple logo shown when booted, please patch mp/usr/local/bin/restored\_external using this command: <br />
+./ida\_patcher -i restored\_external -p restored_external_verbose_patch.dif<br />***
